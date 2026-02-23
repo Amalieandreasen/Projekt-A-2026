@@ -1,0 +1,9 @@
+2.	Lav en komponent der lader brugeren skrive tekst i et felt, men en watcher fjerner/escaper <script> og event-attributter (fx onerror=) før visning. Vis både det originale input og saniterede output.
+
+vue komponent:
+bruger skriver noget i inputfelt
+en watcher holder øje med hvad der bliver skrevet
+watcheren skal fjerne script og event attributter
+vis både original og den rensede version
+
+
