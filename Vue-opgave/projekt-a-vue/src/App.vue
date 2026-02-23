@@ -1,5 +1,9 @@
-<script setup></script>
+<script setup>
+import Input from "./components/Input.vue";
+</script>
 
-<template></template>
+<template>
+  <Input />
+</template>
 
 <style scoped></style>
