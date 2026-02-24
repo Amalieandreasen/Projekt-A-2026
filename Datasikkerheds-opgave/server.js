@@ -8,6 +8,7 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
 require("dotenv").config();
 app.use(
@@ -24,7 +25,7 @@ const requireAuthWithTimeout = (req, res, next) => {
     return res.status(401).json({ error: "Not Authenticated" });
   }
 
-  const maxTime = 5 * 1000;
+  const maxTime = 20 * 1000;
   const now = Date.now();
 
   if (now - req.session.loginTime > maxTime) {
@@ -43,20 +44,32 @@ app.get("/private", requireAuthWithTimeout, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "private.html"));
 });
 
+app.get("/api/userdata", requireAuthWithTimeout, (req, res) => {
+  fs.readFile("users.json", "utf8", (err, data) => {
+    if (err) {
+      return res.status(500).send("Kan ikke læse brugerdata");
+    }
+    const users = JSON.parse(data);
+    const user = users.find((u) => u.username === req.session.userId);
+    if (!user) {
+      return res.status(404).send("bruger ikke fundet");
+    }
+    res.json(user);
+  });
+});
+
 app.post("/submit", (req, res) => {
   const { username, password } = req.body;
 
-  fs.readFile("users.json", "utf8", (err, data) => {
+  fs.readFile("users.json", "utf8", async (err, data) => {
     if (err) {
       return res.status(500).send("kan ikke læse brugerdata");
     }
 
     const users = JSON.parse(data);
-    const user = users.find(
-      (u) => u.username === username && u.password === password,
-    );
+    const user = users.find((u) => u.username === username);
 
-    if (user) {
+    if (user && (await bcrypt.compare(password, user.password))) {
       req.session.userId = user.username;
       req.session.loginTime = Date.now();
       res.redirect("/private");

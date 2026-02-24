@@ -3,7 +3,18 @@ import Input from "./components/Input.vue";
 </script>
 
 <template>
-  <Input />
+  <section>
+    <Input />
+  </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+</style>

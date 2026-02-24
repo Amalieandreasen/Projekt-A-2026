@@ -1,10 +1,17 @@
 [
   {
     "username": "amalie",
-    "password": "1234"
+    "password": "$2b$10$8gDVF2FWZNG4iQUP4soTee5B1plmMgSJL6Ck7tSUf7gVFdJaLyjyC",
+    "hobby": "golf"
   },
   {
     "username": "nicolai",
-    "password": "abcd"
+    "password": "$2b$10$dGpXtRGAjZ6eqIT3/sxTkOzp2e20xabULGAleucbRHQsG/VNm/ptS",
+    "hobby": "golf"
+  },
+  {
+    "username": "richard",
+    "password": "$2a$10$SutNz/rc/qAsb6ejlc9cQuKXb7wspVugdqtqDVdJuzLLbd1sCoOsG",
+    "hobby": "tog"
   }
 ]
