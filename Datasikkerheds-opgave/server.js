@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+// læser dotenv filen der indeholder miljøvariabler
 require("dotenv").config();
 
 // session konfiguration
