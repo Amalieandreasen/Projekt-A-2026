@@ -3,13 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Din private side</title>
     <script src="private.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Din private side</h1>
-    <div id="name"></div>
-    <div id="hobby"></div>
-    <div id="message"></div>
+    <section class="privateSection">
+      <h1>Din private side</h1>
+      <div class="personalInformation">
+        <div id="name"></div>
+        <div id="hobby"></div>
+      </div>
+      <div id="modal" class="modal hidden">
+        <div class="modalContent" id="message"></div>
+      </div>
+    </section>
   </body>
 </html>
