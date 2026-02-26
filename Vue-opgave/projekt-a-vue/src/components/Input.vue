@@ -32,9 +32,9 @@ const sanitizedText = ref("");
 watch(originalText, (newValue) => {
   // fjerner script start tags
   let cleaned = newValue.replace(/<script.*?>/gi, "");
-  // fjerner script lukke tag
+  // fjerner script lukke tags
   cleaned = cleaned.replace(/<\/script>/gi, "");
-  // fjerner inline eventhandlers
+  // fjerner inline event attributter
   cleaned = cleaned.replace(/on\w+=(["']).*?\1/gi, "");
   sanitizedText.value = cleaned;
 });
